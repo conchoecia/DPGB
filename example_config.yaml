@@ -1,0 +1,25 @@
+# Example config file for https://github.com/conchoecia/DPGB
+assembly: "/path/to/your/assembly.fasta"
+
+# window is the total bp displayed in the plot.
+#  anything > 200kb is too big to visualize reads
+window: 200000
+# what kmer size to use to visualize homology.
+#  21 works well enough for most applications
+kmer: 21
+
+# bam files - make sure they're indexed
+ccs: "/path/to/CCS_reads/mapped/to/reference.sorted.bam"
+subreads: "/path/to/CLR_reads/mapped/to/reference.sorted.bam"
+
+# The way this works is to define the desired middle points for
+#  each axis. The [str, int, str, int] below corresponds to:
+#  
+#  ["sca1",   # name of the scaffold to plot for x axis. Must match fasta header.
+#   17200000, # position on x-axis scaffold to plot
+#   "sca2",   # name of the scaffold to plot for y-axis. Must match fasta header.
+#   4700000   # position on y-axis scaffold to plot.
+#  ]
+breaks:
+  - [ "sca1", 17200000, "sca2", 4700000  ] # plot this position
+  - [ "sca1", 322595,   "sca2", 19753000 ] # plot this other position
